@@ -1,0 +1,13 @@
+
+#sketch-container {
+    width: 640px;
+    height: 640px;
+    display: grid;
+    border: solid 20px #00BBF9;
+    box-shadow: 6px 6px 15px -5px rgba(0,0,0,0.5);
+}
+
+.sketch-block {
+    width: 100%;
+    height: 100%;
+}
