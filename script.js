@@ -20,4 +20,4 @@ function drawBox(squareCount) {
 const randomColorMap = ['FFADAD', 'FFD6A5', 'FDFFB6', 'CAFFBF', '9BF6FF', 'A0C4FF', 'BDB2FF', 'FFC6FF'];
 
 
-drawBox(100); // 100 seems like a good max
+drawBox(16); // 100 seems like a good max

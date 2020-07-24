@@ -1,3 +1,7 @@
+body {
+    background-color: #fffffc;
+}
+
 #wrapper {
     display: grid;
     grid-template-columns: auto 680px auto;
