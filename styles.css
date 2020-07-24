@@ -1,13 +1,97 @@
+#wrapper {
+    display: grid;
+    grid-template-columns: auto 680px auto;
+    grid-template-rows: repeat(3, auto);
+}
+
+#header, #main, #footer {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+#footer {
+    margin-top: 20px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.6em;
+    text-align: right;
+}
+
+#footer a, a:visited, a:active {
+    color: #00BBF9;
+}
+
+#option-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+}
 
 #sketch-container {
     width: 640px;
     height: 640px;
     display: grid;
     border: solid 20px #00BBF9;
-    box-shadow: 6px 6px 15px -5px rgba(0,0,0,0.5);
+    box-shadow: 3px 3px 1px 0px rgba(0,0,0,0.6);
 }
 
 .sketch-block {
     width: 100%;
     height: 100%;
 }
+
+h1 {
+    margin: 10px 0 0 0;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 2.5em;
+    color: #FEE440;
+    text-shadow: 1px 1px rgba(0,0,0,0.6);
+}
+
+button {
+    padding: 10px 10px 10px 10px;
+    border: none;
+    border-radius: 0;
+    box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.6);
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.7em;
+    color: #fffffc;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 1px 0px rgba(0,0,0,0.6);
+}
+
+.purple {
+    background-color: #9B5DE5;
+}
+
+.pink {
+    background-color: #F15BB5;
+}
+
+.orange {
+    background-color: #FEE440;
+}
+
+.blue {
+    background-color: #00BBF9;
+}
+
+.cyan {
+    background-color: #00F5D4;
+}
+
+/*
+Colors:
+Purple: 9B5DE5
+Pink: F15BB5
+Orange: FEE440
+Blue: 00BBF9
+Turkos: 00F5D4
+
+*/

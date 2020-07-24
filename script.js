@@ -13,11 +13,11 @@ function drawBox(squareCount) {
 
     const sketchBlock = document.querySelectorAll('.sketch-block');
     sketchBlock.forEach(block => block.addEventListener('mouseover', () => {
-    block.style.backgroundColor = 'black';
-}))
+        block.style.backgroundColor = 'black';
+    }));
 }
 
 const randomColorMap = ['FFADAD', 'FFD6A5', 'FDFFB6', 'CAFFBF', '9BF6FF', 'A0C4FF', 'BDB2FF', 'FFC6FF'];
 
 
-drawBox(16); // 100 seems like a good max
+drawBox(100); // 100 seems like a good max
