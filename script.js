@@ -33,10 +33,18 @@ function reset() {
 }
 
 function drawBlackBox() {
+    if (this.classList.contains('isGray')) {
+        this.classList.remove('isGray');
+    };
+    this.style.opacity = 1;
     this.style.backgroundColor = 'rgba(0,0,0,1)';
 }
 
 function drawRainbowBox() {
+    if (this.classList.contains('isGray')) {
+        this.classList.remove('isGray');
+    };
+    this.style.opacity = 1;
     let randomSelector = Math.floor(Math.random() * 8);
     const randomColorMap = ['#FFADAD', '#FFD6A5', '#FDFFB6', '#CAFFBF', '#9BF6FF', '#A0C4FF', '#BDB2FF', '#FFC6FF'];
     let color = randomColorMap[randomSelector];
@@ -45,7 +53,15 @@ function drawRainbowBox() {
 }
 
 function drawGrayBox() {
-    this.style.backgroundColor = 'rgba(0,0,0,0.1';
+    if (this.style.opacity >= 0.1 && this.classList.contains('isGray')) {
+        this.style.opacity = parseFloat(this.style.opacity) + 0.1;
+    } else {
+        this.style.opacity = 0.1;
+    };
+    this.style.backgroundColor = 'rgba(0,0,0)'
+    if (!this.classList.contains('isGray')) {
+        this.classList.add('isGray');
+    };
 }
 
 let activeFunctionality = drawBlackBox;
@@ -55,25 +71,28 @@ resetBtn.addEventListener('click', reset);
 
 const blackBtn = document.querySelector('#blackBtn');
 blackBtn.addEventListener('click', () => {
+    let previousFunctionality = activeFunctionality;
     activeFunctionality = drawBlackBox;
-    sketchBlockEvent();
+    sketchBlockEvent(previousFunctionality);
 })
 
 const rainbowBtn = document.querySelector('#rainbowBtn');
 rainbowBtn.addEventListener('click', () => {
+    let previousFunctionality = activeFunctionality;
     activeFunctionality = drawRainbowBox;
-    sketchBlockEvent();
+    sketchBlockEvent(previousFunctionality);
 })
 
 const grayBtn = document.querySelector('#grayBtn');
 grayBtn.addEventListener('click', () => {
+    let previousFunctionality = activeFunctionality;
     activeFunctionality = drawGrayBox;
-    sketchBlockEvent();
+    sketchBlockEvent(previousFunctionality);
 })
 
-function sketchBlockEvent() {
+function sketchBlockEvent(previousFunctionality) {
     const sketchBlock = document.querySelectorAll('.sketch-block');
-    sketchBlock.forEach(block => block.removeEventListener('mouseover', activeFunctionality));
+    sketchBlock.forEach(block => block.removeEventListener('mouseover', previousFunctionality));
     sketchBlock.forEach(block => block.addEventListener('mouseover', activeFunctionality));
     return sketchBlock;
 }
