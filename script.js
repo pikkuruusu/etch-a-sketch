@@ -11,12 +11,9 @@ function drawBox(squareCount) {
         sketchContainer.appendChild(div);
     }
 
-    const sketchBlock = document.querySelectorAll('.sketch-block');
+    let sketchBlock = sketchBlockEvent();
+    
     sketchBlock.forEach(block => block.style.backgroundColor = 'rgba(255,255,255,1');
-
-    sketchBlock.forEach(block => block.addEventListener('mouseover', () => {
-        block.style.backgroundColor = 'rgba(0,0,0,1)';
-    }));
 }
 
 function reset() {
@@ -35,9 +32,50 @@ function reset() {
     drawBox(squareCount);
 }
 
-const randomColorMap = ['FFADAD', 'FFD6A5', 'FDFFB6', 'CAFFBF', '9BF6FF', 'A0C4FF', 'BDB2FF', 'FFC6FF'];
+function drawBlackBox() {
+    this.style.backgroundColor = 'rgba(0,0,0,1)';
+}
+
+function drawRainbowBox() {
+    let randomSelector = Math.floor(Math.random() * 8);
+    const randomColorMap = ['#FFADAD', '#FFD6A5', '#FDFFB6', '#CAFFBF', '#9BF6FF', '#A0C4FF', '#BDB2FF', '#FFC6FF'];
+    let color = randomColorMap[randomSelector];
+
+    this.style.backgroundColor = color;
+}
+
+function drawGrayBox() {
+    this.style.backgroundColor = 'rgba(0,0,0,0.1';
+}
+
+let activeFunctionality = drawBlackBox;
 
 const resetBtn = document.querySelector('#resetBtn');
 resetBtn.addEventListener('click', reset);
+
+const blackBtn = document.querySelector('#blackBtn');
+blackBtn.addEventListener('click', () => {
+    activeFunctionality = drawBlackBox;
+    sketchBlockEvent();
+})
+
+const rainbowBtn = document.querySelector('#rainbowBtn');
+rainbowBtn.addEventListener('click', () => {
+    activeFunctionality = drawRainbowBox;
+    sketchBlockEvent();
+})
+
+const grayBtn = document.querySelector('#grayBtn');
+grayBtn.addEventListener('click', () => {
+    activeFunctionality = drawGrayBox;
+    sketchBlockEvent();
+})
+
+function sketchBlockEvent() {
+    const sketchBlock = document.querySelectorAll('.sketch-block');
+    sketchBlock.forEach(block => block.removeEventListener('mouseover', activeFunctionality));
+    sketchBlock.forEach(block => block.addEventListener('mouseover', activeFunctionality));
+    return sketchBlock;
+}
 
 drawBox(16); // 100 seems like a good max
